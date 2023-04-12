@@ -95,7 +95,61 @@ public class Garage{
      * public void methodName(String m)
      *
      */
+    private Car[] cars = new Car[3];
+    public static int countCars = 0;
 
+     public Garage() {
+        for (int i = 0; i < cars.length; i++) {
+            cars[i] = new Car();
+        }
+    }
 
+    public void addCar(String m) {
+        boolean checkCars=false;
+        for (int i = 0; i < cars.length; i++) {
+           
+            if (cars[i].getModel().equalsIgnoreCase(m)) {
+                         checkCars=true;
+            } }
+          if(checkCars==false) {
+           cars[countCars].setModel(m);
+           cars[countCars].moveCarIn();
+           countCars++;
+          }          
+        
+    }
+
+    public void moveOut(String m) {
+        for (int i = 0; i < cars.length; i++) {
+            if (cars[i].getModel().equalsIgnoreCase(m)) {
+                cars[i].moveCarOut();
+            }
+        }
+    }
+
+    public void moveIn(String m) {
+        for (int i = 0; i < cars.length; i++) {
+            if (cars[i].getModel().equalsIgnoreCase(m)) {
+                cars[i].moveCarIn();
+            }
+        }
+    }
+
+    public void listCars() {
+        int count = 1;
+        System.out.println("All cars in the garage are:");
+        for (int i = 0; i < cars.length; i++) {
+            if (cars[i].getInOutGarage()==true) {
+                
+                System.out.println("car " + (count++ )+ ": " + cars[i].getModel());
+                
+            } 
+
+            
+        }
+        System.out.println();
+    }
 
 }
+
+
